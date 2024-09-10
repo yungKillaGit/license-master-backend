@@ -1,5 +1,5 @@
 {
-  "name": "your-project-name",
+  "name": "license_master_backend",
   "version": "1.0.0",
   "main": "src/index.ts",
   "volta": {
@@ -9,9 +9,7 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc && tsc-alias",
     "start": "pm2 start ./dist/index.js --no-daemon",
-    "generate": "drizzle-kit generate:pg",
-    "generate:custom": "drizzle-kit generate:pg --custom",
-    "studio": "drizzle-kit studio",
+    "generate": "drizzle-kit generate",
     "prepare": "husky install",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.{js,mjs,cjs,ts,mts}\"",
@@ -25,7 +23,7 @@
     "bcrypt": "^5.1.1",
     "cookie": "^0.6.0",
     "dotenv": "^16.1.4",
-    "drizzle-orm": "^0.30.7",
+    "drizzle-orm": "^0.33.0",
     "fastify": "^4.26.2",
     "fastify-type-provider-zod": "^1.1.9",
     "pm2": "^5.3.1",
@@ -39,7 +37,7 @@
     "@types/pg": "^8.10.2",
     "autoprefixer": "^10.4.13",
     "commitizen": "^4.3.0",
-    "drizzle-kit": "^0.20.14",
+    "drizzle-kit": "^0.24.2",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
@@ -48,9 +46,9 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
+    "prettier": "^3.3.2",
     "tsc-alias": "^1.8.8",
     "tsx": "^4.7.2",
-    "typescript": "^5.1.6",
-    "prettier": "^3.3.2"
+    "typescript": "^5.1.6"
   }
 }

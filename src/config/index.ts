@@ -12,9 +12,6 @@ const envSchema = z.object({
   DB_USER: z.string(),
   DB_PASSWORD: z.string(),
   DB_DATABASE: z.string(),
-  SHIKIMORI_APP_NAME: z.string(),
-  SHIKIMORI_CLIENT_ID: z.string(),
-  SHIKIMORI_CLIENT_SECRET: z.string(),
   DB_MAX_CONNECTIONS: z.coerce.number().default(20),
   DB_SSL_CA: z.string().optional(),
 });
@@ -35,9 +32,6 @@ const getConfiguration = () => {
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: process.env.DB_PASSWORD,
     DB_DATABASE: process.env.DB_DATABASE,
-    SHIKIMORI_APP_NAME: process.env.SHIKIMORI_APP_NAME,
-    SHIKIMORI_CLIENT_ID: process.env.SHIKIMORI_CLIENT_ID,
-    SHIKIMORI_CLIENT_SECRET: process.env.SHIKIMORI_CLIENT_SECRET,
   }) as unknown as Configuration;
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
