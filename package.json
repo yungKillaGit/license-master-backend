@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "volta": {
-    "node": "20.12.2"
+    "node": "20.17.0"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -12,8 +12,7 @@
     "generate": "drizzle-kit generate",
     "prepare": "husky install",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{js,mjs,cjs,ts,mts}\"",
-    "lint:fix": "eslint \"src/**/*.{js,mjs,cjs,ts,mts}\" --fix"
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ."
   },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
@@ -41,12 +40,12 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-kit": "^10.31.1",
+    "eslint-kit": "^11.14.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "tsc-alias": "^1.8.8",
     "tsx": "^4.7.2",
     "typescript": "^5.1.6"
