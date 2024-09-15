@@ -11,7 +11,12 @@ import { routes } from '@/routes';
 import { configuration } from './config';
 
 const app = fastify({
-  logger: true,
+  logger: {
+    level: 'debug',
+    transport: {
+      target: 'pino-pretty',
+    },
+  },
 });
 
 app.register(swagger, { transform: jsonSchemaTransform });
