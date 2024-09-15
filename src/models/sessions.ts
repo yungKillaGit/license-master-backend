@@ -1,5 +1,5 @@
 import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
-import { users } from './users';
+import { users } from '../domains/users/model';
 
 export const sessions = pgTable('sessions', {
   sessionId: text('session_id').primaryKey(),

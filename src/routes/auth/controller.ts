@@ -4,7 +4,7 @@ import { authenticate } from '@/plugins/authenticate';
 import { deleteSession, login, register } from './repository';
 import { loginSchema, registerSchema } from './schema';
 
-export const auth: FastifyPluginCallback = (fastify, options, done) => {
+export const authController: FastifyPluginCallback = (fastify, options, done) => {
   const api = withZod(fastify);
 
   api.post(

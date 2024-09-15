@@ -6,6 +6,7 @@ dotenv.config();
 const envSchema = z.object({
   NODE_ENV: z.enum(['staging', 'development']),
   APP_PORT: z.coerce.number().default(8080),
+  APP_HOST: z.string().default('localhost'),
   ORIGIN: z.string().url(),
   DB_PORT: z.coerce.number().default(5432),
   DB_HOST: z.string(),
@@ -26,6 +27,7 @@ const getConfiguration = () => {
   let configuration = envSchema.parse({
     NODE_ENV: process.env.NODE_ENV,
     APP_PORT: process.env.APP_PORT,
+    APP_HOST: process.env.APP_HOST,
     ORIGIN: process.env.ORIGIN,
     DB_HOST: process.env.DB_HOST,
     DB_PORT: process.env.DB_PORT,

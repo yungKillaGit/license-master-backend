@@ -2,9 +2,9 @@ import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
 import { db } from '@/db';
+import { users } from '@/domains/users';
 import { ConflictError, UnauthorizedError } from '@/library/errors';
 import { sessions } from '@/models/sessions';
-import { users } from '@/models/users';
 
 export const getUser = async (email: string) => {
   const [user] = await db.select().from(users).where(eq(users.email, email)).limit(1);
