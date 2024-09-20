@@ -10,7 +10,7 @@ import { errorHandler } from '@/plugins/error-handler';
 import { routes } from '@/routes';
 import { configuration } from './config';
 
-const app = fastify({
+export const app = fastify({
   logger: {
     level: 'debug',
     transport: {
@@ -63,4 +63,4 @@ app.ready().then(() => {
   app.swagger();
 });
 
-export default app;
+app.get('/', () => ({ ok: true }));

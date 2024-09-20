@@ -2,12 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "command": "npm run dev",
+      "name": "Run npm start:backend",
       "request": "launch",
-      "name": "npm run dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "preLaunchTask": "tsc: check-types"
+      "type": "node-terminal"
     }
   ]
 }

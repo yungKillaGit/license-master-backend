@@ -4,7 +4,7 @@ import { z } from 'zod';
 dotenv.config();
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['staging', 'development']),
+  NODE_ENV: z.enum(['staging', 'development', 'test']),
   APP_PORT: z.coerce.number().default(8080),
   APP_HOST: z.string().default('localhost'),
   ORIGIN: z.string().url(),
@@ -36,9 +36,11 @@ const getConfiguration = () => {
     DB_DATABASE: process.env.DB_DATABASE,
   }) as unknown as Configuration;
 
+  const isStaging = configuration.NODE_ENV === 'staging';
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-expect-error
-  configuration.DB_SSL = configuration.NODE_ENV !== 'development' ? { rejectUnauthorized: true, ca: configuration.DB_SSL_CA } : undefined;
+  configuration.DB_SSL = isStaging ? { rejectUnauthorized: true, ca: configuration.DB_SSL_CA } : undefined;
 
   configuration = configurationSchema.parse(configuration);
   return configuration;

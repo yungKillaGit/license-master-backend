@@ -20,6 +20,7 @@
     "./*.ts",
     "src/**/*.ts",
     "drizzle.config.ts",
-    ".eslintrc.js"
+    ".eslintrc.js",
+    "vitest.config.mts"
   ]
 }
