@@ -4,19 +4,29 @@ import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import swagger from '@fastify/swagger';
 import swaggerUi from '@fastify/swagger-ui';
+import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import fastify from 'fastify';
 import { jsonSchemaTransform } from 'fastify-type-provider-zod';
 import { errorHandler } from '@/plugins/error-handler';
 import { routes } from '@/routes';
 import { configuration } from './config';
+import { db } from './db';
 
 export const app = fastify({
   logger: {
     level: 'debug',
     transport: {
       target: 'pino-pretty',
+      options: {
+        colorize: true,
+        colorizeObjects: true,
+      },
     },
   },
+});
+
+app.addHook('onReady', async () => {
+  await migrate(db, { migrationsFolder: 'drizzle' });
 });
 
 app.register(swagger, { transform: jsonSchemaTransform });
@@ -63,4 +73,6 @@ app.ready().then(() => {
   app.swagger();
 });
 
-app.get('/', () => ({ ok: true }));
+app.get('/', () => {
+  return { ok: true };
+});

@@ -1,4 +1,5 @@
 import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
+import { StatusCodes } from 'http-status-codes';
 import { ZodError } from 'zod';
 import { AppError } from '@/library/errors';
 
@@ -17,7 +18,7 @@ interface ErrorResponse {
 export const errorHandler = (error: FastifyError, req: FastifyRequest, reply: FastifyReply) => {
   req.log.error(error);
 
-  let status = 500;
+  let status = StatusCodes.INTERNAL_SERVER_ERROR;
   let message = 'Internal Server Error';
   let detail;
   let fields;
@@ -30,15 +31,17 @@ export const errorHandler = (error: FastifyError, req: FastifyRequest, reply: Fa
       fields = [{ name: error.field, message: error.message }];
     }
   } else if (error instanceof ZodError) {
-    status = 422;
+    status = StatusCodes.UNPROCESSABLE_ENTITY;
     message = 'One or more fields are incorrectly formatted';
     fields = error.issues.map((issue) => ({
       name: String(issue.path[0]),
       message: issue.message,
     }));
-  } else if (error.statusCode === 429) {
-    status = 429;
+  } else if (error.statusCode === StatusCodes.UNPROCESSABLE_ENTITY) {
+    status = StatusCodes.TOO_MANY_REQUESTS;
     message = "You've sent too many requests, please try again later";
+  } else {
+    detail = error.message;
   }
 
   const response: ErrorResponse = {

@@ -13,6 +13,7 @@ const envSchema = z.object({
   DB_USER: z.string(),
   DB_PASSWORD: z.string(),
   DB_DATABASE: z.string(),
+  DB_DATABASE_TEST: z.string(),
   DB_MAX_CONNECTIONS: z.coerce.number().default(20),
   DB_SSL_CA: z.string().optional(),
 });
@@ -23,7 +24,7 @@ const configurationSchema = envSchema.extend({
 
 type Configuration = z.infer<typeof configurationSchema>;
 
-const getConfiguration = () => {
+const getConfiguration = (): Configuration => {
   let configuration = envSchema.parse({
     NODE_ENV: process.env.NODE_ENV,
     APP_PORT: process.env.APP_PORT,
@@ -34,7 +35,8 @@ const getConfiguration = () => {
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: process.env.DB_PASSWORD,
     DB_DATABASE: process.env.DB_DATABASE,
-  }) as unknown as Configuration;
+    DB_DATABASE_TEST: process.env.DB_DATABASE_TEST,
+  });
 
   const isStaging = configuration.NODE_ENV === 'staging';
 

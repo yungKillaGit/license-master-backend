@@ -1,5 +1,6 @@
+import { StatusCodes } from 'http-status-codes';
 import { expect, test } from 'vitest';
-import { app } from './app';
+import { app } from '@/app';
 
 test('GET / should return status OK', async () => {
   const response = await app.inject({
@@ -7,6 +8,6 @@ test('GET / should return status OK', async () => {
     url: '/',
   });
 
-  expect(response.statusCode).toBe(200);
+  expect(response.statusCode).toBe(StatusCodes.OK);
   expect(response.json()).toEqual({ ok: true });
 });

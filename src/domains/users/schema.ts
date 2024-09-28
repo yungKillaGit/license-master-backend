@@ -10,3 +10,4 @@ export const UpdateUserSchema = InsertUserSchema.partial();
 
 export type CreateUserDto = z.infer<typeof CreateUserSchema>;
 export type UpdateUserDto = z.infer<typeof UpdateUserSchema>;
+export type UserDto = z.infer<typeof SelectUserSchema>;

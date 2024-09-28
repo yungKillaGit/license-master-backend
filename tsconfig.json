@@ -11,7 +11,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@test/*": ["test/*"]
     },
     "typeRoots": ["src/types"]
   },
@@ -21,6 +22,7 @@
     "src/**/*.ts",
     "drizzle.config.ts",
     ".eslintrc.js",
-    "vitest.config.mts"
+    "vitest.config.mts",
+    "test/**/*.ts"
   ]
 }

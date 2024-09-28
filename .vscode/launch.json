@@ -6,6 +6,12 @@
       "name": "Run npm start:backend",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "command": "npm run test",
+      "name": "Run backend tests",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }
